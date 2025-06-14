@@ -1,0 +1,3 @@
+\timing on
+\pset pager off
+\set HISTFILE ~/.psql_history_docker

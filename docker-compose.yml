@@ -1,0 +1,18 @@
+services:
+  db:
+    image: postgres:17
+    container_name: postgres-study-env_db_1
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db_dumps:/docker-entrypoint-initdb.d
+      - ./.psqlrc:/var/lib/postgresql/.psqlrc
+      - ./.psqlrc:/root/.psqlrc
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+volumes:
+  postgres_data:

@@ -1,0 +1,5 @@
+To run psql:
+docker compose exec -ti db psql -U postgres -d demo
+
+To run sql script:
+docker compose exec -ti db psql -U postgres -d demo < ./some-script.sql
