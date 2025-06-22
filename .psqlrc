@@ -1,3 +1,57 @@
+-- Enable verbose error messages for better debugging
+\set VERBOSITY verbose
+
+-- Set a custom prompt: shows database name and user
+\set PROMPT1 '%[%033[1;32m%]%n@%/%R%[%033[0m%]%# '
+
+-- Enable timing to measure query execution time
 \timing on
-\pset pager off
-\set HISTFILE ~/.psql_history_docker
+
+-- Use table format for better readability
+\x auto
+\pset format wrapped
+\pset linestyle unicode
+\pset border 2
+
+-- Show NULL values as [NULL]
+\pset null '[NULL]'
+
+-- Expand output for better readability of wide tables
+\pset expanded auto
+
+-- Set history size for command recall
+\set HISTSIZE 2000
+
+-- Ignore duplicate commands in history
+\set HISTCONTROL ignoredups
+
+-- Automatically show query results in a pager (like less)
+\pset pager always
+
+-- Enable column names in output
+\pset tuples_only off
+
+-- Show query plans for learning query optimization
+\set SHOWPLAN 'EXPLAIN ANALYZE'
+
+-- Custom shortcuts for common commands
+\set tables '\\dt'
+\set indexes '\\di'
+\set schemas '\\dn'
+\set users '\\du'
+\set describe '\\d+'
+\set analyze '\\set SHOWPLAN EXPLAIN ANALYZE'
+\set noanalyze '\\set SHOWPLAN off'
+
+-- Display current database and user on connect
+\echo 'Connected to database: ' :DBNAME ' as user: ' :USER
+
+-- Enable autocompletion (if supported)
+\set COMP_KEYWORD_CASE upper
+
+-- Set output to be more readable with colors
+\pset columns 80
+\pset linestyle unicode
+\pset unicode_border_linestyle single
+\pset unicode_column_linestyle single
+\pset unicode_header_linestyle double
